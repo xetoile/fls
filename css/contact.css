@@ -1,0 +1,57 @@
+div#contact-form div.sender,
+div#contact-form div.body,
+div#contact-form div.action {
+	border-bottom: 1px solid black;
+}
+
+div#contact-form div.sender,
+div#contact-form div.body,
+div#contact-form div.action,
+div#contact-form div.result {
+	display:flex;
+	padding: .5em 0;
+}
+
+div#contact-form div.sender > div:nth-child(1),
+div#contact-form div.body > div:nth-child(1),
+div#contact-form div.action > div:nth-child(1),
+div#contact-form div.result > div:nth-child(1) {
+	width: 12em;
+	text-align: right;
+	margin-right: 1em;
+}
+
+div#contact-form div.sender > div:nth-child(2),
+div#contact-form div.body > div:nth-child(2),
+div#contact-form div.action > div:nth-child(2)
+div#contact-form div.result > div {
+	flex: 1 0 auto;
+}
+
+div#contact-form div.sender input {
+	width: 30em;
+}
+
+div#contact-form div.body textarea {
+	width: 90%;
+	min-width: 30em;
+	height: 20em;
+}
+
+div#contact-form div.action span.sender {
+	color: blue;
+	text-decoration: underline;
+	font-family: monospace;
+}
+
+div#contact-form div.result div.not-yet {
+	color: gray;
+}
+
+div#contact-form div.result div.success {
+	color: green;
+}
+
+div#contact-form div.result div.failure {
+	color: red;
+}

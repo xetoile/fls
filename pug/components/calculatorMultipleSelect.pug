@@ -1,0 +1,22 @@
+div.calculator-multiple-select
+	div
+		select(
+			ng-model="$ctrl.model"
+			ng-change="$ctrl.onChange('{{ $ctrl.model }}', '{{ $ctrl.ratio }}')"
+		)
+			option(value="")
+			option(
+				ng-repeat="criterium in $ctrl.criteriaSet | filter:$ctrl.criteriaFilter | orderBy:['data.group','data.rank','id'] track by criterium.id"
+				value='{{ criterium.id }}'
+			)
+				| {{ criterium.data.group ? [criterium.data.group, criterium.name].join(' - ') : criterium.name }}
+	div(ng-if="$ctrl.family.multiple")
+		input.calculator-ratio(
+			ng-model="$ctrl.ratio"
+			ng-init="$ctrl.ratio = 0"
+			ng-change="$ctrl.onChange('{{ [$ctrl.model, $ctrl.ratio].join('_') }}')"
+			type="number"
+			min="0"
+			max="100"
+		)
+		| %

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+html(ng-app='theApp')
+	head(ng-controller='LayoutHeadCtrl as $ctrl')
+		title(ng-bind='$ctrl.headTitle')
+		meta(charset='utf-8')
+		meta(name='description' content="Web engineering company based in France - but hey, we speak English too!")
+		each val, ind in owner
+			meta(name=ind content=val)
+		link(rel="shortcut icon" type="image/png" href="/public/assets/favicon.png")
+		block styles
+			link(
+				rel='stylesheet'
+				href='/public/styles/main.css'
+			)
+		block scripts
+			script(src='/public/scripts/angular.min.js')
+			script(src='/public/scripts/theApp.js')
+	body(ng-controller='LayoutCtrl as $ctrl')
+		div#upper-container
+		div#main-container
+			div#left-column
+				img#company-logo(src="/public/assets/logo-ld.png")
+				ul
+					li
+						a(href='{{ $ctrl.leftMenu.home.url }}')
+							| {{ $ctrl.leftMenu.home.name }}
+					li
+						a(href='{{ $ctrl.leftMenu.services.url }}')
+							| {{ $ctrl.leftMenu.services.name }}
+					li
+						a(href='{{ $ctrl.leftMenu.calculator.url }}')
+							| {{ $ctrl.leftMenu.calculator.name }}
+					li
+						a(href='{{ $ctrl.leftMenu.contact.url }}')
+							| {{ $ctrl.leftMenu.contact.name }}
+				hr
+				ul
+					li
+						a(href='{{ $ctrl.leftMenu.legal.url }}')
+							| {{ $ctrl.leftMenu.legal.name }}
+			div#main-panel
+				block content
+			div#right-column
+		div#lower-container
+			| {{ $ctrl.copyright }}

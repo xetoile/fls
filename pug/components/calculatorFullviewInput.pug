@@ -1,0 +1,19 @@
+div.calculator-fullview-input
+	div
+		| {{ $ctrl.criterium.name }}
+	div
+		input(
+			ng-model="$ctrl.model"
+			ng-change="$ctrl.onChange()"
+			type='range'
+			min='{{ $ctrl.criterium.data.range[0] }}'
+			max='{{ $ctrl.criterium.data.range[1] }}'
+			step='1'
+			ng-init="$ctrl.model = 0"
+		)
+	div.criterium-range
+		| [
+		|
+		| {{ $ctrl.model }}{{ $ctrl.model === criterium.data.range[1] ? '+' : '' }}
+		|
+		| ]

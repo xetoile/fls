@@ -1,0 +1,10 @@
+/node_modules/
+/rethinkdb_data/
+/package-lock.json
+/private/
+/public/assets/*
+/public/html/*
+/public/styles/*
+!/public/html/components/
+/public/html/components/*
+/*.zip

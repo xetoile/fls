@@ -1,0 +1,70 @@
+extends _layout.pug
+
+block append styles
+	link(
+		rel='stylesheet'
+		href='/public/styles/contact.css'
+	)
+
+block content
+	div#contact-container(ng-controller="ContactCtrl as $ctrl")
+		div#contact-introduction
+			h1
+				| Contact
+			p
+				| You're welcome to contact us through the form below, would it be about broad questions, a precise estimate, or even the weather (although a lot of forecast websites will surely provide more accurate information).
+			p
+				| A copy of the e-mail you send us from here will be addressed to you, so that you can follow up our thread using your favorite mail system.
+			p
+				| Please be advised that, although we built this site solely in English, you may address us in French as well. Since, well, this is a French company, right?
+		div#contact-form
+			form(name="contactForm")
+				div.sender
+					div
+						| Your e-mail
+					div
+						input(
+							ng-model="$ctrl.mailSender"
+							ng-change="$ctrl.changedMailSender()"
+							type="email"
+							required
+						)
+				div.body
+					div
+						| Your message
+					div
+						textarea(
+							ng-model="$ctrl.mailBody"
+							minlength="21"
+							required
+						)
+				div.action
+					div
+						button(
+							ng-disabled="contactForm.$invalid || $ctrl.confirmSendStep"
+							ng-click="$ctrl.mailConfirm()"
+						)
+							| Send!
+					div(
+						ng-show="$ctrl.confirmSendStep"
+					)
+						| Please confirm sending using reference e-mail
+						|
+						span.sender
+							| {{ $ctrl.mailSender }}
+						|
+						|
+						button(
+							ng-disabled="contactForm.$invalid || $ctrl.mailSending"
+							ng-click="$ctrl.mailSend()"
+						)
+							| Send!
+				div.result
+					div
+						| The result
+					div.not-yet(ng-if="$ctrl.result === 0")
+						| No mail sent... yet!
+					div.success(ng-if="$ctrl.result === 1")
+						| Mail sent, you should receive your copy... now!
+					div.failure(ng-if="$ctrl.result === -1")
+						| Oops, it failed... here's a message from the subsystem: {{ $ctrl.errorMessage }}

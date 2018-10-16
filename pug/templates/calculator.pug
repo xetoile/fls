@@ -1,0 +1,77 @@
+extends _layout.pug
+
+block append styles
+	link(
+		rel='stylesheet'
+		href='/public/styles/calculator.css'
+	)
+
+block append scripts
+	script(src='/public/scripts/components/calculatorMultipleSelect.js')
+	script(src='/public/scripts/components/calculatorFullviewInput.js')
+
+block content
+	div#calculator-container(ng-controller='CalculatorCtrl as $ctrl')
+		div#calculator-introduction
+			h1 Mission estimate
+			p
+				| Here you can have an idea of the approximate daily rate we would charge for a contract, based on its main properties.
+				| It is designed to help you consider the value we put on each item, however it remains purely informative.
+			p
+				| You may want to toy around with the criteria, so that you can see what makes the price vary.
+				| Rate variations consider our own costs, our responsibilities, the knowledge trade-off, and our eagerness to work on these bases.
+			//-p
+			//-	a(ng-click="$ctrl.meuh()")
+			//-		| MEUH
+		div#calculator-main
+			div#calculator-form(ng-hide="$ctrl.loadingError")
+				div.family(ng-repeat="family in $ctrl.families | orderBy:'id' track by family.id")
+					h3 {{ family.name }}
+					div(ng-if='!family.fullview')
+						div
+							calculator-multiple-select(
+								family="family"
+								criteria-set="$ctrl.criteria"
+								excluded-ids="$ctrl.selectedCriteriaIds"
+								update="$ctrl.refresh"
+								get-index="$ctrl.getIndex"
+							)
+						div.criteria-total(ng-if="family.multiple")
+							div
+							//- here if we want to name the line for the total
+							div
+								span(
+									ng-show="$ctrl.getTotalRatioForFamily(family.id) === 100"
+									style="color:green;"
+								)
+									| &#x2713;
+								span(
+									ng-show="$ctrl.getTotalRatioForFamily(family.id) !== 100"
+									style="color:red;"
+								)
+									| &#x2717;
+								|
+								| {{ $ctrl.getTotalRatioForFamily(family.id) }} %
+					div.criterium-fullview(ng-if='family.fullview')
+						calculator-fullview-input(
+							ng-repeat="criterium in $ctrl.criteria | filter:{family_id:family.id} | orderBy:['data.group','data.rank','id'] track by criterium.id"
+							family="family"
+							criterium="criterium"
+							update="$ctrl.refresh"
+							get-index="$ctrl.getIndex"
+						)
+			div#calculator-result(ng-hide="$ctrl.loadingError")
+				h2 Estimated daily rate
+				div.missing-fields(ng-show="$ctrl.displayMissingOutputFamilies().length")
+					h4 Missing fields!
+					| {{ $ctrl.displayMissingOutputFamilies() }}
+				div.invalid-ratios(ng-show="$ctrl.displayInvalidRatioFamilies().length")
+					h4 Invalid percentages!
+					| {{ $ctrl.displayInvalidRatioFamilies() }}
+				div.estimate(ng-if="$ctrl.estimate && !$ctrl.estimateError && !$ctrl.displayMissingOutputFamilies().length && !$ctrl.displayInvalidRatioFamilies().length")
+					h4 {{ $ctrl.estimate }} &euro;
+				div.estimate-error(ng-if="$ctrl.estimateError")
+					| {{ $ctrl.estimateError }}
+			div#calculator-loading-error(ng-show="$ctrl.loadingError")
+				h4
+					| Oops... an error occurred while loading data from the API... retry and pray?

@@ -1,0 +1,21 @@
+extends _layout.pug
+
+block content
+	div#services-container(ng-controller="ServicesCtrl as $ctrl")
+		h1 Services
+		p
+			| Experiencing Web development - and, more generally, information technologies - for over ten years in radically different types of companies, we provide a wide array of strengthening technical services to IT companies or other businesses that could use our knowledge.
+		p
+			| We revel in planning architectures, conceiving algorithms, orchestrating day-to-day code production and, last but not least, getting our hands dirty by implementing all this thinking. That's a lot of -ing here, but it's got a ring to it, hasn't it?
+		p
+			| Originally, our heart beat for algorithms, logic, which used to mean server-side technologies. But hey, this is the third millennium, Microsoft makes Web browsers now, and more and more complex-hence-interesting logic is processed on the client side. So we've been moving for a while now to what we nerds call "fullstack" skills, nowadays mainly based on JavaScript-flavored technologies.
+		p
+			| Given this alpha and omega, we like to handle complete projects; however, designing logos and a whole graphical identity is not part of our skills, so this kind of contract would involve either your own designers or third-party ones. We're not sectarian though: we know some good graphic designers. We heard that some of them are even good people too.
+		p
+			| We're based in Toulouse, France, home to Airbus and historical capital city of the French aeronautics and space industry. As such, we can fly to about any destination, wherever your project needs us to go. Just give us a minute to check on our vaccine requirements.
+		p
+			| To have a more detailed view of the services we propose, feel free to swing by the
+			|
+			a(href="{{ $ctrl.calculatorSectionUrl }}")
+				| calculator section
+			| .

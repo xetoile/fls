@@ -1,0 +1,67 @@
+div#calculator-introduction {
+	width: 90%;
+}
+
+div#calculator-main {
+	display: flex;
+}
+
+div#calculator-result {
+	margin-left: 5em;
+	height: 15em;
+	position: sticky;
+	top: 1em;
+}
+
+div#calculator-form {
+	width: 25em;
+}
+
+div.calculator-multiple-select, div.criteria-total, div.calculator-fullview-input {
+	display: flex;
+}
+
+div.calculator-fullview-input div:nth-child(1) {
+	flex: 1 0 auto;
+}
+
+div.calculator-fullview-input div:nth-child(3) {
+	width: 5em;
+	text-align: right;
+}
+
+div.calculator-fullview-input div.criterium-range {
+	font-style: italic;
+}
+
+div.calculator-fullview-input input[type="range"] {
+	width: 5em;
+}
+
+/* <select> (div for criterium) */
+div.calculator-multiple-select > div:nth-child(1), div.criteria-total > div:nth-child(1) {
+	flex: 1 0 auto;
+}
+
+div.criteria-total > div:nth-child(1) {
+	text-transform: capitalize;
+	text-align: right;
+}
+
+/* <input> (div for ratio, optional) */
+div.calculator-multiple-select > div:nth-child(2), div.criteria-total > div:nth-child(2) {
+	width: 7em;
+	text-align: right;
+}
+
+div.calculator-multiple-select input.calculator-ratio {
+	width: 3em;
+}
+
+div.estimate-error {
+	color: orangered;
+}
+
+div#calculator-loading-error {
+	color: orangered;
+}

@@ -1,0 +1,65 @@
+extends _layout.pug
+
+block append styles
+	link(
+		rel='stylesheet'
+		href='/public/styles/legal.css'
+	)
+
+block content
+	div#legal-container(ng-controller="LegalCtrl as $ctrl")
+		h1
+			| Legal mentions
+		p
+			| Hello, my name is
+			|
+			span.data
+				| {{ $ctrl.getMeta('name') }}
+			| .
+		p
+			| I'm a
+			|
+			span.data
+				| {{ $ctrl.getMeta('status') }}
+			|
+			| and I started with
+			|
+			span.data
+				| {{ $ctrl.getMeta('capital') }} &euro;
+			| .
+		p
+			| I was registered at the "RCS" - pardon my French - as
+			|
+			span.data
+				| {{ $ctrl.getMeta('rcs') }}
+			| .
+		p
+			| Thanks to the community, I even have this neat VAT key:
+			|
+			span.data
+				| {{ $ctrl.getMeta('vat') }}
+			| .
+		p
+			| If you'd like to contact me, please use the related section of this site (you can
+			|
+			span.data
+				a(href="{{ $ctrl.contactSectionUrl }}")
+					| click this
+			|
+			| if you are really lazy).
+		p
+			| You can also send me a - love? - letter, in case you don't have a network (liar!) and are not that eager to read my answer... anyway, here is my address:
+		p
+			span.data
+				| {{ $ctrl.getMeta('name') }}, {{ $ctrl.getMeta('address') }}
+			| .
+		p
+			| Oh and I almost forgot - for now I'm hosted by these nice people, should you need to contact them:
+			|
+			span.data
+				a(href="{{ $ctrl.getMeta('host') }}")
+					| {{ $ctrl.getMeta('host') }}
+		p
+			| Now you know it all!
+
+

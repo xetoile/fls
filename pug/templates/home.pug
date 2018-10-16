@@ -1,0 +1,30 @@
+extends _layout.pug
+
+block content
+	div#home-container(ng-controller="HomeCtrl as $ctrl")
+		h1
+			| Hello world!
+		p
+			| This site is just a glorified business card for {{ $ctrl.getMeta('name') }}. Here you can
+			|
+			a(href="{{ $ctrl.plan.contact.url }}")
+				| contact us
+			| , make an
+			|
+			a(href="{{ $ctrl.plan.calculator.url }}")
+				| estimate
+			| , or simply have a glimpse of
+			|
+			a(href="{{ $ctrl.plan.services.url }}")
+				| what we do
+			| .
+		p
+			| We deliberately made an English-only version of this site, since it is the only language used in IT. And because yes, some Froggies can understand it decently. We even take showers, actually. Sometimes.
+		p
+			| We built this site with Hapi on NodeJS, RethinkDB and AngularJS, which represents - for now - our favorite technology stack. Sure, it looks like overkill given the site's purpose. But if overkill wasn't fun, the Call of Duty franchise wouldn't sell so many copies. And we clearly couldn't afford an AC-130 to chill out after shipping a deliverable.
+		p
+			| You can have a look at the source code on GitHub
+			|
+			a(href="{{ $ctrl.getMeta('gh') }}")
+				| here
+			| .

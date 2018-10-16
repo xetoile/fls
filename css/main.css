@@ -1,0 +1,81 @@
+@font-face {
+	font-family: 'Play';
+	src: url('/public/assets/Play-Regular.ttf') format('truetype');
+}
+
+body {
+	display: flex;
+	margin: 0;
+	padding: 0;
+	flex-direction: column;
+	min-height: 930px; /* left column's linear gradient's end */
+	background-color: #fafafa;
+	font-family: 'Play';
+	font-size: 16px;
+}
+
+/* to be dissociated: 1/ colorful banner 2/ styled company name/logo TODO */
+div#upper-container {
+	flex: 0 0 auto;
+	height: 6em;
+	background-image: url('/public/assets/keyboard-colorful.jpg');
+	background-position: 0 24%;
+}
+
+div#main-container {
+	flex: 1 0 auto;
+	display: flex;
+	flex-direction: row;
+}
+
+div#lower-container {
+	flex: 0 0 auto;
+	height: 5em;
+	margin-top: 2em;
+	background-color: black;
+	color: #fafafa;
+	line-height: 5em;
+	text-align: center;
+	vertical-align: middle;
+}
+
+div#left-column {
+	flex: 0 0 auto;
+	width: 18em;
+	background: linear-gradient(.3turn, #faa, #fafafa 15em);
+}
+
+img#company-logo {
+	width: 12em;
+	margin: .5em;
+}
+
+div#main-panel {
+	flex: 1 0 0;
+	background-color: transparent;
+}
+
+div#right-column {
+	flex: 0 0 auto;
+	width: 0; /* hidden for now */
+	background-color: green;
+}
+
+div#left-column li {
+	text-transform: capitalize;
+}
+
+div#left-column li a {
+	text-decoration: none;
+	color: initial;
+	font-size: 2em;
+	vertical-align: sub;
+}
+
+div#left-column li a:hover {
+	color: #666;
+}
+
+div#left-column hr {
+	margin: 0 6em 0 2em;
+
